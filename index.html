@@ -113,7 +113,8 @@ select{background:#21262d;border:1px solid #30363d;color:#e6edf3;padding:5px 8px
       <div class="card-title">Dataset</div>
       <div class="stat-row"><span>Stocks with data</span><span class="sv" id="s-n">-</span></div>
       <div class="stat-row"><span>Trading days</span><span class="sv" id="s-days">-</span></div>
-      <div class="stat-row"><span>Generated (UTC)</span><span class="sv" id="s-gen">-</span></div>
+      <div class="stat-row"><span>Date range</span><span class="sv" style="font-size:.7rem" id="s-range">-</span></div>
+      <div class="stat-row"><span>Generated (UTC)</span><span class="sv" style="font-size:.7rem" id="s-gen">-</span></div>
       <div class="stat-row"><span>Industries</span><span class="sv" id="s-k">-</span></div>
     </div>
 
@@ -367,6 +368,7 @@ async function loadData(){
     // populate sidebar meta
     $('s-n').textContent   = DATA.n_stocks;
     $('s-days').textContent= DATA.trading_days;
+    $('s-range').textContent = (DATA.date_from??'-') + ' → ' + (DATA.date_to??'-');
     $('s-gen').textContent = DATA.generated_at?.replace('T',' ')??'-';
     $('s-k').textContent   = DATA.industry_list?.length??'-';
     $('data-age').textContent = '&#8635; ' + (DATA.generated_at?.slice(0,10)??'?');
